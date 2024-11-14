@@ -1,77 +1,115 @@
 <!DOCTYPE html>
 <html lang="ro">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Confirmare Întâlnire</title>
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      text-align: center;
-      padding: 20px;
-    }
-    input[type="text"] {
-      padding: 10px;
-      margin: 10px;
-      width: 300px;
-    }
-    button {
-      padding: 10px 20px;
-      background-color: #28a745;
-      color: white;
-      border: none;
-      cursor: pointer;
-    }
-    button:hover {
-      background-color: #218838;
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Confirmare Apel</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            background-color: #f9f9f9;
+        }
+        .container {
+            max-width: 800px;
+            margin: auto;
+            text-align: center;
+            padding: 20px;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+        .header {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: #f1f1f1;
+            padding: 10px 0;
+            margin-bottom: 20px;
+        }
+        .header img {
+            max-width: 150px;
+            height: auto;
+        }
+        h1 {
+            color: #333;
+        }
+        .important {
+            color: red;
+            font-weight: bold;
+        }
+        .step {
+            margin-top: 30px;
+        }
+        .footer {
+            margin-top: 50px;
+            font-weight: bold;
+        }
+        .confirm-button {
+            margin-top: 20px;
+        }
+        button {
+            padding: 10px 20px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+        .message {
+            color: green;
+            font-size: 1.2em;
+            margin-top: 20px;
+            display: none;
+        }
+    </style>
 </head>
 <body>
-  <h1>Confirmare Întâlnire</h1>
-  <p>Introduceți numele și confirmați întâlnirea:</p>
-  <form id="confirmationForm">
-    <input type="text" id="name" placeholder="Introduceți numele dvs." required>
-    <br>
-    <input type="checkbox" id="confirmCheckbox" required> Sunt de acord să confirm întâlnirea.
-    <br><br>
-    <button type="button" onclick="submitConfirmation()">Trimite</button>
-  </form>
-  <p id="responseMessage" style="color: green; display: none;">Felicitări! Confirmarea a fost trimisă cu succes.</p>
+    <div class="header">
+        <img src="logo_agentie.webp" alt="Logo-ul Agenției">
+    </div>
+    <div class="container">
+        <h1>Felicitări! Apelul tău a fost rezervat.</h1>
+        <p class="important">IMPORTANT: Completează acești doi pași acum. Dacă nu vei face, vom fi nevoiți să anulăm apelul și să oferim locul altcuiva din cauza cererii uriașe pe care o întâlnim în ultima perioadă.</p>
+        
+        <div class="step">
+            <h2>Pasul 1: Confirmă Apelul</h2>
+            <p>Confirmă apelul bifând căsuța de mai jos și apăsând pe „Confirmă”:</p>
+            <form onsubmit="handleConfirmation(event)">
+                <input type="checkbox" id="confirm" required>
+                <label for="confirm">Confirm că voi participa la apel.</label>
+                <div class="confirm-button">
+                    <button type="submit">Confirmă</button>
+                </div>
+            </form>
+            <p class="message" id="successMessage">Felicitări! Întâlnirea ta a fost confirmată. Ne bucurăm să lucrăm împreună!</p>
+        </div>
 
-  <script>
-    function submitConfirmation() {
-      const name = document.getElementById('name').value;
-      const confirmCheckbox = document.getElementById('confirmCheckbox').checked;
+        <div class="step">
+            <h2>Pasul 2: Descoperă Procesul Nostru</h2>
+            <p>Urmărește o prezentare completă a modului în care vom lucra împreună:</p>
+            <video width="600" controls>
+                <source src="video.mp4" type="video/mp4">
+                Browserul tău nu suportă video.
+            </video>
+        </div>
 
-      if (!name || !confirmCheckbox) {
-        alert("Vă rugăm să completați toate câmpurile și să bifați căsuța!");
-        return;
-      }
+        <div class="footer">
+            
+        </div>
+    </div>
 
-      const data = {
-        name: name,
-        confirmation: "Da"
-      };
-
-      fetch('LINK-UL-TĂU-DE-DEPLOYMENT', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(data),
-      })
-      .then(response => response.text())
-      .then(result => {
-        document.getElementById('responseMessage').style.display = 'block';
-        document.getElementById('confirmationForm').reset();
-      })
-      .catch(error => {
-        console.error('Eroare:', error);
-        alert("A apărut o problemă. Vă rugăm să încercați din nou.");
-      });
-    }
-  </script>
+    <script>
+        function handleConfirmation(event) {
+            event.preventDefault();
+            const successMessage = document.getElementById('successMessage');
+            successMessage.style.display = 'block';
+        }
+    </script>
 </body>
 </html>
-
