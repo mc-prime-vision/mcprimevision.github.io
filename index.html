@@ -63,24 +63,21 @@
         }
         .message {
             color: green;
-            font-size: 1.5em;
+            font-size: 1.2em;
             margin-top: 20px;
-            display: none;
-        }
-        .hidden {
             display: none;
         }
     </style>
 </head>
 <body>
     <div class="header">
-        <img src="logo agentie.webp" alt="Logo-ul Agenției">
+        <img src="logo_agentie.webp" alt="Logo-ul Agenției">
     </div>
     <div class="container">
         <h1>Felicitări! Apelul tău a fost rezervat.</h1>
         <p class="important">IMPORTANT: Completează acești doi pași acum. Dacă nu vei face, vom fi nevoiți să anulăm apelul și să oferim locul altcuiva din cauza cererii uriașe pe care o întâlnim în ultima perioadă.</p>
         
-        <div class="step" id="step1">
+        <div id="step1" class="step">
             <h2>Pasul 1: Confirmă Apelul</h2>
             <p>Confirmă apelul bifând căsuța de mai jos și apăsând pe „Confirmă”:</p>
             <form onsubmit="handleConfirmation(event)">
@@ -91,8 +88,8 @@
                 </div>
             </form>
         </div>
-
-        <p class="message" id="successMessage">Felicitări! Întâlnirea ta a fost confirmată. Suntem încântați să lucrăm împreună!</p>
+        
+        <p id="successMessage" class="message">Felicitări! Întâlnirea ta a fost confirmată. Suntem încântați să colaborăm cu tine!</p>
 
         <div class="step">
             <h2>Pasul 2: Descoperă Procesul Nostru</h2>
@@ -104,7 +101,7 @@
         </div>
 
         <div class="footer">
-            <!-- Footer content here -->
+            <p>© Agenția Ta</p>
         </div>
     </div>
 
@@ -114,7 +111,7 @@
             const step1 = document.getElementById('step1');
             const successMessage = document.getElementById('successMessage');
 
-            step1.classList.add('hidden');
+            step1.style.display = 'none';
             successMessage.style.display = 'block';
         }
     </script>
