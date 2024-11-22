@@ -13,8 +13,8 @@
             background-color: #f9f9f9;
         }
         .container {
-            max-width: 800px;
-            margin: auto;
+            max-width: 100%;
+            margin: 0 auto;
             text-align: center;
             padding: 20px;
             background: white;
@@ -46,6 +46,12 @@
         .footer {
             margin-top: 50px;
             font-weight: bold;
+            text-align: center;
+        }
+        .footer img {
+            max-width: 100px; /* Dimensiunea logo-ului */
+            height: auto;
+            margin-top: 10px;
         }
         .confirm-button {
             margin-top: 20px;
@@ -66,6 +72,24 @@
             font-size: 1.2em;
             margin-top: 20px;
             display: none;
+        }
+        .video-container {
+            width: 100%;
+            max-width: 600px;
+            margin: 20px auto;
+        }
+        iframe {
+            width: 100%;
+            height: auto;
+            border-radius: 8px;
+        }
+        @media screen and (max-width: 768px) {
+            .container {
+                padding: 10px;
+            }
+            h1, h2 {
+                font-size: 1.2em;
+            }
         }
     </style>
 </head>
@@ -94,11 +118,19 @@
         <div class="step">
             <h2>Pasul 2: Descoperă Procesul Nostru</h2>
             <p>Urmărește o prezentare completă a modului în care vom lucra împreună:</p>
-            <iframe width="600" height="315" src="https://www.youtube.com/embed/wT64wKPePhI" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+            <div class="video-container">
+                <iframe
+                    src="https://www.youtube.com/embed/wT64wKPePhI"
+                    frameborder="0"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                    allowfullscreen>
+                </iframe>
+            </div>
         </div>
 
         <div class="footer">
             <p>© Agenția Ta</p>
+            <img src="logo_agentie.webp" alt="Logo-ul Agenției">
         </div>
     </div>
 
@@ -114,3 +146,4 @@
     </script>
 </body>
 </html>
+
