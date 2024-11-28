@@ -6,61 +6,58 @@
     <title>Confirmare Apel</title>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
     <style>
+        /* Stiluri generale */
         body {
             font-family: 'Poppins', Arial, sans-serif;
-            line-height: 1.6;
             margin: 0;
             padding: 0;
             background-color: #f9f9f9;
+            color: #333;
         }
         .container {
-            max-width: 100%;
+            max-width: 900px;
             margin: 0 auto;
-            text-align: center;
             padding: 20px;
             background: white;
             border-radius: 8px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
         }
         .header {
-            display: flex;
-            justify-content: center;
-            align-items: center;
+            text-align: center;
+            padding: 20px 0;
             background-color: #f1f1f1;
-            padding: 10px 0;
-            margin-bottom: 30px;
         }
         .header img {
             max-width: 100px;
             height: auto;
         }
+        h1, h2 {
+            margin: 10px 0;
+        }
         h1 {
-            color: #333;
             font-size: 1.8em;
-            margin-bottom: 20px;
         }
         h2 {
-            color: #444;
             font-size: 1.4em;
-            margin-bottom: 15px;
+            color: #444;
         }
         .important {
             color: red;
             font-weight: bold;
-            font-size: 1.1em;
-            margin-bottom: 30px;
+            font-size: 1em;
+            margin-bottom: 20px;
         }
         .step {
-            margin-top: 50px;
+            margin-top: 20px;
         }
         .footer {
-            margin-top: 50px;
-            font-weight: bold;
             text-align: center;
+            padding: 10px;
+            font-size: 0.9em;
+            color: #666;
         }
         .footer img {
             max-width: 50px;
-            height: auto;
             margin-top: 10px;
         }
         button {
@@ -68,38 +65,33 @@
             background-color: #4CAF50;
             color: white;
             border: none;
-            cursor: pointer;
             font-size: 16px;
             border-radius: 4px;
+            cursor: pointer;
         }
         button:hover {
             background-color: #45a049;
         }
-        .message {
-            color: green;
-            font-size: 1.2em;
-            margin-top: 20px;
-            display: none;
-        }
         .video-container {
-            width: 100%;
-            max-width: 600px;
-            margin: 30px auto;
+            margin: 20px auto;
+            text-align: center;
         }
         iframe {
             width: 100%;
-            height: auto;
+            max-width: 600px;
+            height: 315px;
             border-radius: 8px;
+            border: none;
         }
         .calendly-container {
-            margin-top: 40px;
+            margin: 20px 0;
         }
         @media screen and (max-width: 768px) {
             .container {
                 padding: 10px;
             }
             h1 {
-                font-size: 1.5em;
+                font-size: 1.6em;
             }
             h2 {
                 font-size: 1.2em;
@@ -124,19 +116,19 @@
         </div>
 
         <!-- Pasul 2: Confirmarea întâlnirii -->
-        <div id="step2" class="step">
+        <div class="step">
             <h2>Pasul 2: Confirmă Întâlnirea</h2>
-            <p>Confirmă întâlnirea completând informațiile de mai jos:</p>
-            <form id="confirmationForm" onsubmit="handleConfirmation(event)">
-                <label for="name">Numele tău:</label><br>
-                <input type="text" id="name" name="name" required style="padding: 10px; margin-top: 10px; width: 80%;"><br><br>
-                <label for="phone">Numărul de telefon:</label><br>
-                <input type="text" id="phone" name="phone" required style="padding: 10px; width: 80%;"><br><br>
+            <p>Bifează căsuța de mai jos pentru a confirma:</p>
+            <form onsubmit="handleConfirmation(event)">
+                <input type="checkbox" id="confirm" required>
+                <label for="confirm">Confirm că voi participa la apel.</label><br><br>
                 <button type="submit">Confirmă</button>
             </form>
         </div>
 
-        <p id="successMessage" class="message">Mulțumim! Întâlnirea ta a fost confirmată. Suntem încântați să colaborăm cu tine!</p>
+        <p id="successMessage" class="message" style="display:none; color:green; font-weight:bold; margin-top:20px;">
+            Mulțumim! Întâlnirea ta a fost confirmată.
+        </p>
 
         <!-- Pasul 3: Vizionarea videoclipului -->
         <div class="step">
@@ -161,19 +153,11 @@
     <script>
         function handleConfirmation(event) {
             event.preventDefault();
-            const name = document.getElementById('name').value;
-            const phone = document.getElementById('phone').value;
-            const step2 = document.getElementById('step2');
             const successMessage = document.getElementById('successMessage');
-
-            if (name && phone) {
-                step2.style.display = 'none';
-                successMessage.style.display = 'block';
-            } else {
-                alert("Te rugăm să completezi toate câmpurile!");
-            }
+            successMessage.style.display = 'block';
         }
     </script>
 </body>
 </html>
+
 
