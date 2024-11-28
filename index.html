@@ -13,6 +13,7 @@
             padding: 0;
             background-color: #f9f9f9;
             color: #333;
+            text-align: center;
         }
         .container {
             max-width: 900px;
@@ -23,8 +24,7 @@
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
         }
         .header {
-            text-align: center;
-            padding: 20px 0;
+            padding: 10px 0;
             background-color: #f1f1f1;
         }
         .header img {
@@ -45,7 +45,7 @@
             color: red;
             font-weight: bold;
             font-size: 1em;
-            margin-bottom: 20px;
+            margin: 20px 0;
         }
         .step {
             margin-top: 20px;
@@ -59,18 +59,6 @@
         .footer img {
             max-width: 50px;
             margin-top: 10px;
-        }
-        button {
-            padding: 10px 20px;
-            background-color: #4CAF50;
-            color: white;
-            border: none;
-            font-size: 16px;
-            border-radius: 4px;
-            cursor: pointer;
-        }
-        button:hover {
-            background-color: #45a049;
         }
         .video-container {
             margin: 20px auto;
@@ -105,7 +93,7 @@
     </div>
     <div class="container">
         <h1>Felicitări! Apelul tău a fost rezervat.</h1>
-        <p class="important">IMPORTANT: Completează acești trei pași acum pentru a finaliza procesul.</p>
+        <p class="important">IMPORTANT: Completează acești doi pași acum. Dacă nu vei face, vom fi nevoiți să anulăm apelul și să oferim locul altcuiva din cauza cererii uriașe pe care o întâlnim în ultima perioadă.</p>
         
         <!-- Pasul 1: Rezervarea întâlnirii -->
         <div class="calendly-container step">
@@ -115,24 +103,9 @@
             <script type="text/javascript" src="https://assets.calendly.com/assets/external/widget.js" async></script>
         </div>
 
-        <!-- Pasul 2: Confirmarea întâlnirii -->
+        <!-- Pasul 2: Vizionarea videoclipului -->
         <div class="step">
-            <h2>Pasul 2: Confirmă Întâlnirea</h2>
-            <p>Bifează căsuța de mai jos pentru a confirma:</p>
-            <form onsubmit="handleConfirmation(event)">
-                <input type="checkbox" id="confirm" required>
-                <label for="confirm">Confirm că voi participa la apel.</label><br><br>
-                <button type="submit">Confirmă</button>
-            </form>
-        </div>
-
-        <p id="successMessage" class="message" style="display:none; color:green; font-weight:bold; margin-top:20px;">
-            Mulțumim! Întâlnirea ta a fost confirmată.
-        </p>
-
-        <!-- Pasul 3: Vizionarea videoclipului -->
-        <div class="step">
-            <h2>Pasul 3: Descoperă Procesul Nostru</h2>
+            <h2>Pasul 2: Descoperă Procesul Nostru</h2>
             <p>Urmărește o prezentare completă a modului în care vom lucra împreună:</p>
             <div class="video-container">
                 <iframe
@@ -149,14 +122,6 @@
             <img src="logo_agentie.webp" alt="Logo-ul Agenției">
         </div>
     </div>
-
-    <script>
-        function handleConfirmation(event) {
-            event.preventDefault();
-            const successMessage = document.getElementById('successMessage');
-            successMessage.style.display = 'block';
-        }
-    </script>
 </body>
 </html>
 
