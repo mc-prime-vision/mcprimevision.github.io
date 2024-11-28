@@ -31,7 +31,7 @@
             margin-bottom: 30px;
         }
         .header img {
-            max-width: 100px; /* Dimensiunea logo-ului de sus */
+            max-width: 100px;
             height: auto;
         }
         h1 {
@@ -51,7 +51,7 @@
             margin-bottom: 30px;
         }
         .step {
-            margin-top: 50px; /* Spațiu între secțiuni */
+            margin-top: 50px;
         }
         .footer {
             margin-top: 50px;
@@ -59,12 +59,9 @@
             text-align: center;
         }
         .footer img {
-            max-width: 50px; /* Dimensiunea logo-ului de jos */
+            max-width: 50px;
             height: auto;
             margin-top: 10px;
-        }
-        .confirm-button {
-            margin-top: 20px;
         }
         button {
             padding: 10px 20px;
@@ -87,12 +84,15 @@
         .video-container {
             width: 100%;
             max-width: 600px;
-            margin: 30px auto; /* Spațiu pentru separare */
+            margin: 30px auto;
         }
         iframe {
             width: 100%;
             height: auto;
             border-radius: 8px;
+        }
+        .calendly-container {
+            margin-top: 40px;
         }
         @media screen and (max-width: 768px) {
             .container {
@@ -113,24 +113,34 @@
     </div>
     <div class="container">
         <h1>Felicitări! Apelul tău a fost rezervat.</h1>
-        <p class="important">IMPORTANT: Completează acești doi pași acum. Dacă nu vei face, vom fi nevoiți să anulăm apelul și să oferim locul altcuiva din cauza cererii uriașe pe care o întâlnim în ultima perioadă.</p>
+        <p class="important">IMPORTANT: Completează acești trei pași acum pentru a finaliza procesul.</p>
         
-        <div id="step1" class="step">
-            <h2>Pasul 1: Confirmă Apelul</h2>
-            <p>Confirmă apelul bifând căsuța de mai jos și apăsând pe „Confirmă”:</p>
-            <form onsubmit="handleConfirmation(event)">
-                <input type="checkbox" id="confirm" required>
-                <label for="confirm">Confirm că voi participa la apel.</label>
-                <div class="confirm-button">
-                    <button type="submit">Confirmă</button>
-                </div>
+        <!-- Pasul 1: Rezervarea întâlnirii -->
+        <div class="calendly-container step">
+            <h2>Pasul 1: Rezervă Întâlnirea</h2>
+            <p>Folosește formularul de mai jos pentru a rezerva întâlnirea:</p>
+            <div class="calendly-inline-widget" data-url="https://calendly.com/contact-mcprimevision" style="min-width:320px;height:700px;"></div>
+            <script type="text/javascript" src="https://assets.calendly.com/assets/external/widget.js" async></script>
+        </div>
+
+        <!-- Pasul 2: Confirmarea întâlnirii -->
+        <div id="step2" class="step">
+            <h2>Pasul 2: Confirmă Întâlnirea</h2>
+            <p>Confirmă întâlnirea completând informațiile de mai jos:</p>
+            <form id="confirmationForm" onsubmit="handleConfirmation(event)">
+                <label for="name">Numele tău:</label><br>
+                <input type="text" id="name" name="name" required style="padding: 10px; margin-top: 10px; width: 80%;"><br><br>
+                <label for="phone">Numărul de telefon:</label><br>
+                <input type="text" id="phone" name="phone" required style="padding: 10px; width: 80%;"><br><br>
+                <button type="submit">Confirmă</button>
             </form>
         </div>
-        
-        <p id="successMessage" class="message">Felicitări! Întâlnirea ta a fost confirmată. Suntem încântați să colaborăm cu tine!</p>
 
+        <p id="successMessage" class="message">Mulțumim! Întâlnirea ta a fost confirmată. Suntem încântați să colaborăm cu tine!</p>
+
+        <!-- Pasul 3: Vizionarea videoclipului -->
         <div class="step">
-            <h2>Pasul 2: Descoperă Procesul Nostru</h2>
+            <h2>Pasul 3: Descoperă Procesul Nostru</h2>
             <p>Urmărește o prezentare completă a modului în care vom lucra împreună:</p>
             <div class="video-container">
                 <iframe
@@ -151,12 +161,19 @@
     <script>
         function handleConfirmation(event) {
             event.preventDefault();
-            const step1 = document.getElementById('step1');
+            const name = document.getElementById('name').value;
+            const phone = document.getElementById('phone').value;
+            const step2 = document.getElementById('step2');
             const successMessage = document.getElementById('successMessage');
 
-            step1.style.display = 'none';
-            successMessage.style.display = 'block';
+            if (name && phone) {
+                step2.style.display = 'none';
+                successMessage.style.display = 'block';
+            } else {
+                alert("Te rugăm să completezi toate câmpurile!");
+            }
         }
     </script>
 </body>
 </html>
+
